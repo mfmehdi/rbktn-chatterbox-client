@@ -72,6 +72,9 @@ describe('chatterbox', function() {
         roomname: 'lobby'
       };
       MessagesView.renderMessage(message);
+
+      console.log($('#chats').children()) 
+      
       expect($('#chats').children().length).to.equal(1);
     });
 

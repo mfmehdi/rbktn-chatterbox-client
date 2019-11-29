@@ -8,9 +8,16 @@ var FormView = {
 
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
-    event.preventDefault();
-    
+   event.preventDefault();
+   var msg = {
+    text:$("#message").val(),
+    username: App.username,
+   }
+   MessagesView.renderMessage(msg)
+   //  FormView.$form.append($("#message").val())
     console.log('click!');
+    
+
   },
 
   setStatus: function(active) {

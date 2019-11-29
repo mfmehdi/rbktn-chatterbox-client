@@ -4,9 +4,13 @@ var RoomsView = {
   $select: $('#rooms select'),
 
   initialize: function() {
+  	
   },
 
-  render: function() {
+  renderRoom : function(val) {
+	// $('<option></option>').val(val).html(text)
+	console.log(RoomsView.$select)
+	RoomsView.$select.append(`<option>${val}</option>`)
   }
 
 };
