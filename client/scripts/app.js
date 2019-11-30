@@ -17,15 +17,30 @@ var App = {
 
   },
 
-  fetch: function(callback = ()=>{}) {
+  fetch: function(callback = ()=>{},room) {
+  ///room = $('.sl:selected').attr('id')
     Parse.readAll((data) => {
       // examine the response from the server request:
-      console.log(data);
-      data.results.forEach((text ,i ) =>{
-        console.log(text)
-      MessagesView.renderMessage(text)
+     console.log(data);
 
-      })
+    for(var i = data.results.length - 1; i >= 0; i--) {
+
+        
+        data.results[i]["friend"] = false;
+      if(data.results[i].username && data.results[i].text){
+          var message=""
+
+         // if(data.results[i].roomname === room)
+                 message = MessageView.render(data.results[i])
+   
+        $message = $(message).on('click', function(){console.log($(this).children()[0].innerHTML)})
+        $('#chats').prepend($message)
+
+        RoomsView.renderRoom(data.results[i].roomname)
+        // console.log(data.results[i])
+       // MessagesView.renderMessage(data.results[i])
+    }
+      }
       callback();
     });
   },

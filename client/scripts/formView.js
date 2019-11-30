@@ -9,13 +9,19 @@ var FormView = {
   handleSubmit: function(event) {
     // Stop the browser from submitting the form
    event.preventDefault();
+   var room=$('.sl:selected').attr('id')
+   console.log(room)
+   
    var msg = {
     text:$("#message").val(),
     username: App.username,
+    roomname:room
    }
    MessagesView.renderMessage(msg)
-   //  FormView.$form.append($("#message").val())
-    console.log('click!');
+   // $('#chats').prepend('<p>test</p>')
+
+    // FormView.$form.append( MessagesView.renderMessage(msg))
+    console.log(msg);
     
 
   },
